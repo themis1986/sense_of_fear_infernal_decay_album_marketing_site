@@ -1,12 +1,9 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import InputLabel from "@mui/material/InputLabel";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import visuallyHidden from "@mui/utils/visuallyHidden";
 import { styled } from "@mui/material/styles";
 
 const StyledBox = styled("div")(({ theme }) => ({
@@ -99,49 +96,27 @@ export default function Hero() {
               width: { sm: "100%", md: "80%" },
             }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality
-            solutions tailored to your needs. Elevate your experience with
-            top-tier features and services.
+            We are more than happy to welcome you on our private new album
+            streaming marketing site.Feel free to listen to our brand new songs
+            and explore our about and highlights section to get to know us
+            better.We are more than welcome to hear your feedbacks and thoughts
+            about our new album and looking forward for a potential
+            collaboration with you!Enjoy!!!
           </Typography>
-          <Stack
-            direction={{ xs: "column", sm: "row" }}
-            spacing={1}
-            useFlexGap
-            sx={{ pt: 2, width: { xs: "100%", sm: "350px" } }}
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            sx={{ minWidth: "fit-content" }}
           >
-            <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
-              Email
-            </InputLabel>
-            <TextField
-              id="email-hero"
-              hiddenLabel
-              size="small"
-              variant="outlined"
-              aria-label="Enter your email address"
-              placeholder="Your email address"
-              fullWidth
-              slotProps={{
-                htmlInput: {
-                  autoComplete: "off",
-                  "aria-label": "Enter your email address",
-                },
-              }}
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              sx={{ minWidth: "fit-content" }}
-            >
-              Start now
-            </Button>
-          </Stack>
+            Listen now
+          </Button>
           <Typography
             variant="caption"
             color="text.secondary"
             sx={{ textAlign: "center" }}
           >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
+            By clicking &quot;Listen now&quot; you agree to our&nbsp;
             <Link href="#" color="primary">
               Terms & Conditions
             </Link>
