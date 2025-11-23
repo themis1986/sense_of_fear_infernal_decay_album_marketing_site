@@ -7,46 +7,39 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
-import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
-import ViewQuiltRoundedIcon from "@mui/icons-material/ViewQuiltRounded";
-
 const items = [
   {
-    icon: <ViewQuiltRoundedIcon />,
-    title: "Dashboard",
-    description:
-      "This item could provide a snapshot of the most important metrics or data points related to the product.",
-    imageLight: `url("${
-      import.meta.env.TEMPLATE_IMAGE_URL || "https://mui.com"
-    }/static/images/templates/templates-images/dash-light.png")`,
-    imageDark: `url("${
-      import.meta.env.TEMPLATE_IMAGE_URL || "https://mui.com"
-    }/static/images/templates/templates-images/dash-dark.png")`,
+    title: "1. Intro",
   },
   {
-    icon: <EdgesensorHighRoundedIcon />,
-    title: "Mobile integration",
-    description:
-      "This item could provide information about the mobile app version of the product.",
-    imageLight: `url("${
-      import.meta.env.TEMPLATE_IMAGE_URL || "https://mui.com"
-    }/static/images/templates/templates-images/mobile-light.png")`,
-    imageDark: `url("${
-      import.meta.env.TEMPLATE_IMAGE_URL || "https://mui.com"
-    }/static/images/templates/templates-images/mobile-dark.png")`,
+    title: "2. Hellfire",
   },
   {
-    icon: <DevicesRoundedIcon />,
-    title: "Available on all platforms",
-    description:
-      "This item could let users know the product is available on all platforms, such as web, mobile, and desktop.",
-    imageLight: `url("${
-      import.meta.env.TEMPLATE_IMAGE_URL || "https://mui.com"
-    }/static/images/templates/templates-images/devices-light.png")`,
-    imageDark: `url("${
-      import.meta.env.TEMPLATE_IMAGE_URL || "https://mui.com"
-    }/static/images/templates/templates-images/devices-dark.png")`,
+    title: "3. Infernal Decay",
+  },
+  {
+    title: "4. Shadows of the Past",
+  },
+  {
+    title: "5. Eternal Damnation",
+  },
+  {
+    title: "6. Rise of the Fallen",
+  },
+  {
+    title: "7. Beyond the Grave",
+  },
+  {
+    title: "8. Final Judgment",
+  },
+  {
+    title: "9. Into the Abyss",
+  },
+  {
+    title: "10. End of Days",
+  },
+  {
+    title: "11. Requiem for the Lost",
   },
 ];
 
@@ -145,7 +138,7 @@ export function MobileLayout({
   );
 }
 
-export default function Features() {
+export default function Player() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
 
   const handleItemClick = (index: number) => {
@@ -163,15 +156,14 @@ export default function Features() {
           gutterBottom
           sx={{ color: "text.primary" }}
         >
-          Product features
+          Stream our music
         </Typography>
         <Typography
           variant="body1"
           sx={{ color: "text.secondary", mb: { xs: 2, sm: 4 } }}
         >
-          Provide a brief overview of the key features of the product. For
-          example, you could list the number of features, their types or
-          benefits, and add-ons.
+          Listen to our latest album tracks.All audio streams are at quality
+          levels optimized for all devices and network conditions.
         </Typography>
       </Box>
       <Box
