@@ -77,7 +77,7 @@ export default function Hero() {
               fontSize: "clamp(3rem, 10vw, 3.5rem)",
             }}
           >
-            Our&nbsp;latest&nbsp;
+            Listen&nbsp;our&nbsp;latest&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -89,7 +89,7 @@ export default function Hero() {
                 }),
               })}
             >
-              products
+              Album
             </Typography>
           </Typography>
           <Typography
