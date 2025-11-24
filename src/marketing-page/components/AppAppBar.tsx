@@ -52,10 +52,20 @@ export default function AppAppBar() {
       <Container maxWidth="lg">
         <StyledToolbar variant="dense" disableGutters>
           <Box
-            sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: "center",
+              px: 0,
+              justifyContent: "space-between",
+            }}
           >
             <Logo />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+              }}
+            >
               <Button
                 variant="text"
                 color="info"
@@ -84,9 +94,9 @@ export default function AppAppBar() {
                 variant="text"
                 color="info"
                 size="small"
-                onClick={() => scrollTo("video")}
+                onClick={() => scrollTo("contact")}
               >
-                Video
+                Contact
               </Button>
             </Box>
           </Box>

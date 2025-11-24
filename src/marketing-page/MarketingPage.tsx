@@ -4,10 +4,8 @@ import AppTheme from "../shared-theme/AppTheme";
 import AppAppBar from "./components/AppAppBar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Pricing from "./components/Pricing";
 import AlbumPlayer from "./components/AlbumPlayer";
-import Testimonials from "./components/Testimonials";
-// import FAQ from "./components/FAQ";
+import Highlights from "./components/Highlights";
 import Footer from "./components/Footer";
 
 export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
@@ -22,12 +20,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
         <Divider />
         <About />
         <Divider />
-        <Testimonials />
+        <Highlights />
         <Divider />
-        <Pricing />
-        {/* <Divider /> */}
-        {/* <FAQ /> */}
-        {/* <Divider /> */}
         <Footer />
       </div>
     </AppTheme>

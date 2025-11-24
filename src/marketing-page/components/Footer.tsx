@@ -53,7 +53,7 @@ export default function Footer() {
             minWidth: { xs: "100%", sm: "60%" },
           }}
         >
-          <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
+          <Box sx={{ width: { xs: "100%", sm: "60%" } }} id="contact">
             <SitemarkIcon />
             <Typography
               variant="body2"
