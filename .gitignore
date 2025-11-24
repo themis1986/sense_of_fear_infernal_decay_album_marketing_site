@@ -14,3 +14,4 @@ yarn-error.log*
 .npm/
 yarn.lock
 audio_samples/
+.env.local

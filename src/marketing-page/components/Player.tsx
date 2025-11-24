@@ -36,6 +36,7 @@ const Player = forwardRef<PlayerHandle, PlayerProps>(
           src={src}
           onClickNext={onClickNext}
           onClickPrevious={onClickPrevious}
+          onEnded={onClickNext}
         />
       </div>
     );

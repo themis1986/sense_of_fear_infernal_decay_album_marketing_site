@@ -7,54 +7,44 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import AudioPlayer, { type PlayerHandle } from "./Player";
 import { styled } from "@mui/material/styles";
+import { supabase } from "../../supabaseClient";
 
 import cover from "../../assets/cover.png";
 
 const items = [
   {
     title: "1. Intro",
-    src: "../../../audio_samples/test_audio.mp3",
   },
   {
-    title: "2. Hellfire",
-    src: "../../../audio_samples/test_audio_2.mp3",
+    title: "2. Cerberus",
   },
   {
-    title: "3. Infernal Decay",
-    src: "../../../audio_samples/test_audio.mp3",
+    title: "3. Intro (Kiss of war)",
   },
   {
-    title: "4. Shadows of the Past",
-    src: "../../../audio_samples/test_audio_2.mp3",
+    title: "4. Kiss of war",
   },
   {
-    title: "5. Eternal Damnation",
-    src: "../../../audio_samples/test_audio.mp3",
+    title: "5. Riddle of shadows",
   },
   {
-    title: "6. Rise of the Fallen",
-    src: "../../../audio_samples/test_audio_2.mp3",
+    title: "6. Beast",
   },
   {
-    title: "7. Beyond the Grave",
-    src: "../../../audio_samples/test_audio.mp3",
+    title: "7. Empathy",
   },
   {
-    title: "8. Final Judgment",
-    src: "../../../audio_samples/test_audio_2.mp3",
+    title: "8. Shallow journey of your soul",
   },
-  {
-    title: "9. Into the Abyss",
-    src: "../../../audio_samples/test_audio.mp3",
-  },
-  {
-    title: "10. End of Days",
-    src: "../../../audio_samples/test_audio_2.mp3",
-  },
-  {
-    title: "11. Requiem for the Lost",
-    src: "../../../audio_samples/test_audio.mp3",
-  },
+  // {
+  //   title: "9. Into the Abyss",
+  // },
+  // {
+  //   title: "10. End of Days",
+  // },
+  // {
+  //   title: "11. Requiem for the Lost",
+  // },
 ];
 
 interface ChipProps {
@@ -129,8 +119,29 @@ export function MobileLayout({
   );
 }
 
+interface Song {
+  id: number;
+  title: string;
+  url: string;
+  created_at: string;
+}
+
 export default function Player() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
+  const [songs, setSongs] = React.useState<Song[]>([]);
+
+  React.useEffect(() => {
+    async function getSongs() {
+      const { data, error } = await supabase.from("songs").select("*");
+
+      if (error) {
+        console.error("Error fetching songs:", error);
+        return;
+      }
+      setSongs(data);
+    }
+    getSongs();
+  }, []);
 
   const playerRef = React.useRef<PlayerHandle>(null);
 
@@ -156,8 +167,10 @@ export default function Player() {
           variant="body1"
           sx={{ color: "text.primary", mb: { xs: 2, sm: 4 } }}
         >
-          Listen to our latest album tracks.All audio streams are at quality
-          levels optimized for all devices and network conditions.
+          Listen to our latest
+          <span style={{ fontWeight: "bold" }}> "Infernal Decay"</span> album
+          stream.All audio streams are at quality levels optimized for all
+          devices and network conditions.
         </Typography>
       </Box>
       <Box
@@ -242,7 +255,7 @@ export default function Player() {
           >
             <AudioPlayer
               ref={playerRef}
-              src={items[selectedItemIndex].src}
+              src={songs[selectedItemIndex]?.url}
               onClickNext={() => {
                 const nextIndex = (selectedItemIndex + 1) % items.length;
                 setSelectedItemIndex(nextIndex);
