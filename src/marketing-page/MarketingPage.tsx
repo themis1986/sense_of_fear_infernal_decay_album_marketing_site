@@ -3,7 +3,7 @@ import Divider from "@mui/material/Divider";
 import AppTheme from "../shared-theme/AppTheme";
 import AppAppBar from "./components/AppAppBar";
 import Hero from "./components/Hero";
-import Highlights from "./components/Highlights";
+import About from "./components/About";
 import Pricing from "./components/Pricing";
 import AlbumPlayer from "./components/AlbumPlayer";
 import Testimonials from "./components/Testimonials";
@@ -20,7 +20,7 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
       <div>
         <AlbumPlayer />
         <Divider />
-        <Highlights />
+        <About />
         <Divider />
         <Testimonials />
         <Divider />

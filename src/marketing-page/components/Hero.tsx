@@ -33,7 +33,7 @@ const StyledImage = styled("img")(({ theme }) => ({
 }));
 
 export default function Hero() {
-  const { scrollTo } = useScrollTo(-15);
+  const { scrollTo } = useScrollTo(-50);
 
   return (
     <Box

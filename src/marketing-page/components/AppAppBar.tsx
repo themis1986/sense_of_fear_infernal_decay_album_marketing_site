@@ -30,7 +30,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 export default function AppAppBar() {
-  const { scrollTo } = useScrollTo(-15);
+  const { scrollTo } = useScrollTo(-50);
 
   const [open, setOpen] = React.useState(false);
 
