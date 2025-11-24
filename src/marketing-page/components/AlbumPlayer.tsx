@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import MuiChip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import AudioPlayer from "./Player";
+import AudioPlayer, { type PlayerHandle } from "./Player";
 import { styled } from "@mui/material/styles";
 
 import cover from "../../assets/cover.png";
@@ -13,36 +13,47 @@ import cover from "../../assets/cover.png";
 const items = [
   {
     title: "1. Intro",
+    src: "../../../audio_samples/test_audio.mp3",
   },
   {
     title: "2. Hellfire",
+    src: "../../../audio_samples/test_audio_2.mp3",
   },
   {
     title: "3. Infernal Decay",
+    src: "../../../audio_samples/test_audio.mp3",
   },
   {
     title: "4. Shadows of the Past",
+    src: "../../../audio_samples/test_audio_2.mp3",
   },
   {
     title: "5. Eternal Damnation",
+    src: "../../../audio_samples/test_audio.mp3",
   },
   {
     title: "6. Rise of the Fallen",
+    src: "../../../audio_samples/test_audio_2.mp3",
   },
   {
     title: "7. Beyond the Grave",
+    src: "../../../audio_samples/test_audio.mp3",
   },
   {
     title: "8. Final Judgment",
+    src: "../../../audio_samples/test_audio_2.mp3",
   },
   {
     title: "9. Into the Abyss",
+    src: "../../../audio_samples/test_audio.mp3",
   },
   {
     title: "10. End of Days",
+    src: "../../../audio_samples/test_audio_2.mp3",
   },
   {
     title: "11. Requiem for the Lost",
+    src: "../../../audio_samples/test_audio.mp3",
   },
 ];
 
@@ -121,8 +132,11 @@ export function MobileLayout({
 export default function Player() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
 
+  const playerRef = React.useRef<PlayerHandle>(null);
+
   const handleItemClick = (index: number) => {
     setSelectedItemIndex(index);
+    playerRef.current?.play();
   };
 
   const selectedFeature = items[selectedItemIndex];
@@ -226,7 +240,19 @@ export default function Player() {
               p: 2,
             }}
           >
-            <AudioPlayer />
+            <AudioPlayer
+              ref={playerRef}
+              src={items[selectedItemIndex].src}
+              onClickNext={() => {
+                const nextIndex = (selectedItemIndex + 1) % items.length;
+                setSelectedItemIndex(nextIndex);
+              }}
+              onClickPrevious={() => {
+                const prevIndex =
+                  (selectedItemIndex - 1 + items.length) % items.length;
+                setSelectedItemIndex(prevIndex);
+              }}
+            />
 
             <Box
               sx={(theme) => ({
