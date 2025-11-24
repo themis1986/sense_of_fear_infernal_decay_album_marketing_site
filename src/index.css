@@ -1,7 +1,19 @@
+/* body custom styles/ */
 body {
   background-image: url("./assets/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   backdrop-filter: blur(5px) brightness(0.5);
+}
+/* audio player custom styles config */
+.custom-audio-player {
+  width: 100%; /* full width */
+}
+
+.custom-audio-player .rhap_container {
+  background: #1e1e1e; /* your custom bg color */
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
 }

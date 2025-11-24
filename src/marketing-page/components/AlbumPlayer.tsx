@@ -5,7 +5,10 @@ import Card from "@mui/material/Card";
 import MuiChip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import AudioPlayer from "./Player";
 import { styled } from "@mui/material/styles";
+
+import cover from "../../assets/cover.png";
 
 const items = [
   {
@@ -87,7 +90,7 @@ export function MobileLayout({
       sx={{
         display: { xs: "flex", sm: "none" },
         flexDirection: "column",
-        gap: 2,
+        gap: 1,
       }}
     >
       <Box sx={{ display: "flex", gap: 2, overflow: "auto" }}>
@@ -102,35 +105,12 @@ export function MobileLayout({
         ))}
       </Box>
       <Card variant="outlined">
-        <Box
-          sx={(theme) => ({
-            mb: 2,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            minHeight: 280,
-            backgroundImage: "var(--items-imageLight)",
-            ...theme.applyStyles("dark", {
-              backgroundImage: "var(--items-imageDark)",
-            }),
-          })}
-          style={
-            items[selectedItemIndex]
-              ? ({
-                  "--items-imageLight": items[selectedItemIndex].imageLight,
-                  "--items-imageDark": items[selectedItemIndex].imageDark,
-                } as any)
-              : {}
-          }
-        />
         <Box sx={{ px: 2, pb: 2 }}>
           <Typography
             gutterBottom
             sx={{ color: "text.primary", fontWeight: "medium" }}
           >
             {selectedFeature.title}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary", mb: 1.5 }}>
-            {selectedFeature.description}
           </Typography>
         </Box>
       </Card>
@@ -160,7 +140,7 @@ export default function Player() {
         </Typography>
         <Typography
           variant="body1"
-          sx={{ color: "text.secondary", mb: { xs: 2, sm: 4 } }}
+          sx={{ color: "text.primary", mb: { xs: 2, sm: 4 } }}
         >
           Listen to our latest album tracks.All audio streams are at quality
           levels optimized for all devices and network conditions.
@@ -178,11 +158,9 @@ export default function Player() {
             sx={{
               display: { xs: "none", sm: "flex" },
               flexDirection: "column",
-              gap: 2,
-              height: "100%",
             }}
           >
-            {items.map(({ icon, title, description }, index) => (
+            {items.map(({ title }, index) => (
               <Box
                 key={index}
                 component={Button}
@@ -219,10 +197,7 @@ export default function Player() {
                     },
                   ]}
                 >
-                  {icon}
-
                   <Typography variant="h6">{title}</Typography>
-                  <Typography variant="body2">{description}</Typography>
                 </Box>
               </Box>
             ))}
@@ -237,7 +212,7 @@ export default function Player() {
           sx={{
             display: { xs: "none", sm: "flex" },
             width: { xs: "100%", md: "70%" },
-            height: "var(--items-image-height)",
+            height: "50%",
           }}
         >
           <Card
@@ -246,28 +221,26 @@ export default function Player() {
               height: "100%",
               width: "100%",
               display: { xs: "none", sm: "flex" },
-              pointerEvents: "none",
+              flexDirection: "column",
+              alignItems: "center",
+              p: 2,
             }}
           >
+            <AudioPlayer />
+
             <Box
               sx={(theme) => ({
                 m: "auto",
                 width: 420,
                 height: 500,
                 backgroundSize: "contain",
-                backgroundImage: "var(--items-imageLight)",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundImage: `url(${cover})`,
                 ...theme.applyStyles("dark", {
-                  backgroundImage: "var(--items-imageDark)",
+                  backgroundImage: `url(${cover})`,
                 }),
               })}
-              style={
-                items[selectedItemIndex]
-                  ? ({
-                      "--items-imageLight": items[selectedItemIndex].imageLight,
-                      "--items-imageDark": items[selectedItemIndex].imageDark,
-                    } as any)
-                  : {}
-              }
             />
           </Card>
         </Box>

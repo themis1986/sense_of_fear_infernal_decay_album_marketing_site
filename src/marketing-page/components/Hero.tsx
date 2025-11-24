@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import albumCover from "../../assets/cover.png";
+import { useScrollTo } from "../hooks/useScrollTo";
 
 const StyledImage = styled("img")(({ theme }) => ({
   display: "block",
@@ -32,6 +33,8 @@ const StyledImage = styled("img")(({ theme }) => ({
 }));
 
 export default function Hero() {
+  const { scrollTo } = useScrollTo(-15);
+
   return (
     <Box
       id="hero"
@@ -104,6 +107,7 @@ export default function Hero() {
             color="primary"
             size="small"
             sx={{ minWidth: "fit-content" }}
+            onClick={() => scrollTo("player")}
           >
             Listen now
           </Button>
