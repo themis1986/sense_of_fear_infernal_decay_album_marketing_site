@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -10,14 +11,16 @@ import Typography from "@mui/material/Typography";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/X";
-import SitemarkIcon from "./Logo";
+import Logo from "./Logo";
+import { CircularProgress, TextareaAutosize } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
       {"Copyright © "}
       <Link color="text.secondary" href="https://mui.com/">
-        Sitemark
+        Sense of Fear
       </Link>
       &nbsp;
       {new Date().getFullYear()}
@@ -25,7 +28,115 @@ function Copyright() {
   );
 }
 
+const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
+  width: 250,
+  // Background and text color for dark mode look
+  backgroundColor: theme.palette.mode === "dark" ? "#121212" : "#fff",
+  color: theme.palette.text.primary,
+
+  // Outlined border style
+  borderRadius: "4px",
+  border: `1px solid ${theme.palette.divider}`,
+
+  // Padding to match TextField's internal padding (makes height look correct)
+  padding: "8px 12px",
+
+  boxSizing: "border-box",
+  resize: "vertical",
+  fontFamily: theme.typography.fontFamily,
+
+  // Focus and Hover effects
+  "&:hover": {
+    borderColor: theme.palette.text.primary,
+  },
+  "&:focus-visible": {
+    outline: "none",
+    borderColor: theme.palette.primary.main,
+    borderWidth: "2px",
+  },
+}));
+
 export default function Footer() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<string | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+  useEffect(() => {
+    console.log(status);
+  }, [status]);
+
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/themis19861986@gmail.com";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    let emailSuccess = false;
+
+    // 1. Send Email via FormSubmit
+    try {
+      const emailResponse = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          Message: formData.message,
+          _subject: `New contact message from ${formData.name}`, // Subject line for the email
+        }),
+      });
+
+      if (emailResponse.ok) {
+        emailSuccess = true;
+      } else {
+        console.error("Email forwarding failed (FormSubmit error).");
+      }
+    } catch (error) {
+      console.error("Network error during FormSubmit call:", error);
+    }
+
+    if (emailSuccess) {
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" }); // Clear form
+    } else {
+      setStatus("error");
+    }
+  };
+
+  // Helper text based on submission status
+  const getStatusMessage = () => {
+    if (status === "success") {
+      return (
+        <Typography color="success.main" variant="body2" sx={{ mt: 1 }}>
+          Message sent successfully! We will be in touch soon.
+        </Typography>
+      );
+    }
+    if (status === "error") {
+      return (
+        <Typography color="error.main" variant="body2" sx={{ mt: 1 }}>
+          Failed to send message. Please check the console and ensure the email
+          address is confirmed.
+        </Typography>
+      );
+    }
+    return null;
+  };
+
   return (
     <Container
       sx={{
@@ -43,6 +154,7 @@ export default function Footer() {
           flexDirection: { xs: "column", sm: "row" },
           width: "100%",
           justifyContent: "space-between",
+          gap: { xs: 4, sm: 8 },
         }}
       >
         <Box
@@ -53,112 +165,101 @@ export default function Footer() {
             minWidth: { xs: "100%", sm: "60%" },
           }}
         >
-          <Box sx={{ width: { xs: "100%", sm: "60%" } }} id="contact">
-            <SitemarkIcon />
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ fontWeight: 600, mt: 2 }}
+          <Logo />
+          <Typography
+            variant="body2"
+            gutterBottom
+            sx={{ fontWeight: 600, mt: 2 }}
+          >
+            Interested in our work? Let's talk!
+          </Typography>
+          <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
+            The form below sends your message to our secure database AND
+            forwards it to us via email. You can also contact us directly on{" "}
+            <span style={{ fontStyle: "italic", fontWeight: "bold" }}>
+              myemail@gmail.com
+            </span>
+            .
+          </Typography>
+        </Box>
+
+        {/* === 2. Unified Contact Form === */}
+        <Box sx={{ width: { xs: "100%", sm: "60%" } }} id="contact">
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+          >
+            {/* Name Field */}
+            <InputLabel htmlFor="name">Name</InputLabel>
+            <TextField
+              id="name"
+              hiddenLabel
+              size="small"
+              variant="outlined"
+              required
+              fullWidth
+              aria-label="Enter your name"
+              placeholder="Your name / label"
+              value={formData.name}
+              onChange={handleChange}
+              sx={{ width: "250px" }}
+            />
+
+            {/* Email Field */}
+            <InputLabel htmlFor="email">Email</InputLabel>
+            <TextField
+              id="email"
+              type="email"
+              hiddenLabel
+              size="small"
+              variant="outlined"
+              required
+              fullWidth
+              aria-label="Enter your email address"
+              placeholder="Your email address"
+              value={formData.email}
+              onChange={handleChange}
+              sx={{ width: "250px" }}
+            />
+
+            {/* Message Textarea */}
+            <InputLabel htmlFor="message">Contact us</InputLabel>
+            <StyledTextarea
+              id="message"
+              aria-label="Enter your text"
+              placeholder="Your text"
+              minRows={3}
+              required
+              value={formData.message}
+              onChange={handleChange}
+            />
+
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ width: "250px" }}
             >
-              Join the newsletter
-            </Typography>
-            <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
-              Subscribe for weekly updates. No spams ever!
-            </Typography>
-            <InputLabel htmlFor="email-newsletter">Email</InputLabel>
-            <Stack direction="row" spacing={1} useFlexGap>
-              <TextField
-                id="email-newsletter"
-                hiddenLabel
-                size="small"
-                variant="outlined"
-                fullWidth
-                aria-label="Enter your email address"
-                placeholder="Your email address"
-                slotProps={{
-                  htmlInput: {
-                    autoComplete: "off",
-                    "aria-label": "Enter your email address",
-                  },
-                }}
-                sx={{ width: "250px" }}
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                sx={{ flexShrink: 0 }}
-              >
-                Subscribe
-              </Button>
-            </Stack>
+              {status === "loading" ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center", // Center content horizontally
+                    gap: 1,
+                  }}
+                >
+                  <CircularProgress size={20} color="inherit" />
+                  Sending...
+                </Box>
+              ) : (
+                "Send Message"
+              )}
+            </Button>
+
+            {getStatusMessage()}
           </Box>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: "medium" }}>
-            Product
-          </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Features
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Testimonials
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Highlights
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Pricing
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            FAQs
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: "medium" }}>
-            Company
-          </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            About us
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Careers
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Press
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: "medium" }}>
-            Legal
-          </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Terms
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Privacy
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Contact
-          </Link>
         </Box>
       </Box>
       <Box
