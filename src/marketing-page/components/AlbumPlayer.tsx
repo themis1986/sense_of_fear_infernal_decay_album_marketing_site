@@ -34,11 +34,11 @@ const items = [
     title: "7. Empathy",
   },
   {
-    title: "8. Shallow journey of your soul",
+    title: "8. Labyrinth",
   },
-  // {
-  //   title: "9. Into the Abyss",
-  // },
+  {
+    title: "9. Shallow journey of your soul",
+  },
   // {
   //   title: "10. End of Days",
   // },
