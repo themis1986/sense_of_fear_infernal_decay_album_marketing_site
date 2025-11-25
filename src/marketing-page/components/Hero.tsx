@@ -79,9 +79,9 @@ export default function Hero() {
               variant="h1"
               sx={(theme) => ({
                 fontSize: "inherit",
-                color: "primary.main",
+                color: "warning.main",
                 ...theme.applyStyles("dark", {
-                  color: "primary.light",
+                  color: "warning.light",
                 }),
               })}
             >
