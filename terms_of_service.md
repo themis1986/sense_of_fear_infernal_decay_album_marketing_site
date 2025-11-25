@@ -1,7 +1,5 @@
 # Terms of Service
 
-**Last Updated:** [Date]
-
 ## Introduction
 
 These Terms of Service ("Terms") govern your use of **Sense of fear** (the "Service"), a platform for streaming and marketing new album. By accessing or using the Service, you agree to comply with these Terms. If you do not agree, do not use the Service.

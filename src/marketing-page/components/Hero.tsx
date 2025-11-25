@@ -117,7 +117,11 @@ export default function Hero() {
             sx={{ textAlign: "center" }}
           >
             By clicking &quot;Listen now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
+            <Link
+              href="https://github.com/themis1986/sense_of_fear_infernal_decay_album_marketing_site/blob/main/terms_of_service.md"
+              color="primary"
+              target="_blank"
+            >
               Terms & Conditions
             </Link>
             .

@@ -34,7 +34,7 @@ function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
       {"Copyright © "}
-      <Link color="text.secondary" href="https://mui.com/">
+      <Link color="text.secondary" href="#">
         Sense of Fear
       </Link>
       &nbsp;
@@ -168,7 +168,8 @@ export default function Footer() {
         flexDirection: "column",
         alignItems: "center",
         gap: { xs: 4, sm: 8 },
-        py: { xs: 8, sm: 10 },
+        pt: { xs: 8, sm: 10 },
+        pb: { xs: 8, sm: 10, md: 30 },
         textAlign: { sm: "center", md: "left" },
       }}
     >
@@ -199,8 +200,8 @@ export default function Footer() {
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
             The form sends your message and forwards it to us via email. You can
-            also contact us directly on our social media platforms or directly
-            from your email at{" "}
+            also contact us on our social media platforms or directly from your
+            email at{" "}
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>
               senseoffearband@gmail.com
             </span>
@@ -216,7 +217,7 @@ export default function Footer() {
           <Box
             component="form"
             onSubmit={handleSubmit}
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+            sx={{ display: "flex", flexDirection: "column", gap: 1 }}
           >
             {/* Name Field */}
             <InputLabel htmlFor="name">Name</InputLabel>
@@ -301,13 +302,23 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link
+            color="text.secondary"
+            variant="body2"
+            href="https://github.com/themis1986/sense_of_fear_infernal_decay_album_marketing_site/blob/main/privacy_Policy.md"
+            target="_blank"
+          >
             Privacy Policy
           </Link>
           <Typography sx={{ display: "inline", mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link
+            color="text.secondary"
+            variant="body2"
+            href="https://github.com/themis1986/sense_of_fear_infernal_decay_album_marketing_site/blob/main/terms_of_service.md"
+            target="_blank"
+          >
             Terms of Service
           </Link>
           <Copyright />
