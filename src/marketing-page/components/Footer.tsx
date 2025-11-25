@@ -8,12 +8,27 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/X";
 import Logo from "./Logo";
 import { CircularProgress, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+import SvgIcon from "@mui/material/SvgIcon";
+
+function InstagramIcon() {
+  return (
+    <SvgIcon>
+      <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm6.5-.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+    </SvgIcon>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <SvgIcon>
+      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 2 .1v2.3h-1.1c-1 0-1.3.6-1.3 1.2V12h2.5l-.4 3h-2.1v7A10 10 0 0 0 22 12z" />
+    </SvgIcon>
+  );
+}
 
 function Copyright() {
   return (
@@ -29,7 +44,7 @@ function Copyright() {
 }
 
 const StyledTextarea = styled(TextareaAutosize)(({ theme }) => ({
-  width: 250,
+  width: 350,
   // Background and text color for dark mode look
   backgroundColor: theme.palette.mode === "dark" ? "#121212" : "#fff",
   color: theme.palette.text.primary,
@@ -72,11 +87,20 @@ export default function Footer() {
       [e.target.id]: e.target.value,
     });
   };
+
   useEffect(() => {
-    console.log(status);
+    if (status === "success") {
+      const timer = setTimeout(() => {
+        setStatus(null);
+      }, 3000);
+
+      return () => clearTimeout(timer); // cleanup
+    }
   }, [status]);
 
-  const FORM_ENDPOINT = "https://formsubmit.co/ajax/themis19861986@gmail.com";
+  const FORM_ENDPOINT = `https://formsubmit.co/ajax/${
+    import.meta.env.VITE_EMAIL
+  }`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -174,12 +198,16 @@ export default function Footer() {
             Interested in our work? Let's talk!
           </Typography>
           <Typography variant="body2" sx={{ color: "text.secondary", mb: 2 }}>
-            The form below sends your message to our secure database AND
-            forwards it to us via email. You can also contact us directly on{" "}
+            The form sends your message and forwards it to us via email. You can
+            also contact us directly on our social media platforms or directly
+            from your email at{" "}
             <span style={{ fontStyle: "italic", fontWeight: "bold" }}>
-              myemail@gmail.com
+              senseoffearband@gmail.com
             </span>
             .
+            <br />
+            <br />
+            We look forward to hearing from you!
           </Typography>
         </Box>
 
@@ -203,7 +231,7 @@ export default function Footer() {
               placeholder="Your name / label"
               value={formData.name}
               onChange={handleChange}
-              sx={{ width: "250px" }}
+              sx={{ width: "350px" }}
             />
 
             {/* Email Field */}
@@ -220,7 +248,7 @@ export default function Footer() {
               placeholder="Your email address"
               value={formData.email}
               onChange={handleChange}
-              sx={{ width: "250px" }}
+              sx={{ width: "350px" }}
             />
 
             {/* Message Textarea */}
@@ -239,7 +267,7 @@ export default function Footer() {
               type="submit"
               variant="contained"
               color="primary"
-              sx={{ width: "250px" }}
+              sx={{ width: "150px" }}
             >
               {status === "loading" ? (
                 <Box
@@ -293,29 +321,23 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://github.com/mui"
-            aria-label="GitHub"
+            href="https://instagram.com/senseoffear.official"
+            aria-label="
+            Instagram"
             sx={{ alignSelf: "center" }}
+            target="_blank"
           >
-            <GitHubIcon />
+            <InstagramIcon />
           </IconButton>
           <IconButton
             color="inherit"
             size="small"
-            href="https://x.com/MaterialUI"
-            aria-label="X"
+            href="https://facebook.com/senseoffearband"
+            aria-label="Facebook"
             sx={{ alignSelf: "center" }}
+            target="_blank"
           >
-            <TwitterIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            size="small"
-            href="https://www.linkedin.com/company/mui/"
-            aria-label="LinkedIn"
-            sx={{ alignSelf: "center" }}
-          >
-            <LinkedInIcon />
+            <FacebookIcon />
           </IconButton>
         </Stack>
       </Box>
