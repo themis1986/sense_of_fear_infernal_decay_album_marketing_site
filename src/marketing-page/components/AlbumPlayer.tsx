@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import AudioPlayer, { type PlayerHandle } from "./Player";
 import { styled } from "@mui/material/styles";
-import { supabase } from "../../supabaseClient";
+import { supabase, supabaseUrl } from "../../supabaseClient";
 
 import cover from "../../assets/cover.png";
 
@@ -138,7 +138,13 @@ export default function Player() {
         console.error("Error fetching songs:", error);
         return;
       }
-      setSongs(data);
+
+      const dataWithUrls = data.map((song) => ({
+        ...song,
+        url: `${supabaseUrl}/storage/v1/object/public/${song.url}`,
+      }));
+
+      setSongs(dataWithUrls);
     }
     getSongs();
   }, []);
