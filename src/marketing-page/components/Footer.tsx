@@ -4,15 +4,15 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import InputLabel from "@mui/material/InputLabel";
-import Link from "@mui/material/Link";
+import MuiLink from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Logo from "./Logo";
 import { CircularProgress, TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
 import SvgIcon from "@mui/material/SvgIcon";
+import { Link as RouterLink } from "react-router-dom";
 
 function InstagramIcon() {
   return (
@@ -34,9 +34,9 @@ function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
       {"Copyright © "}
-      <Link color="text.secondary" href="#">
+      <MuiLink color="text.secondary" href="#">
         Sense of Fear
-      </Link>
+      </MuiLink>
       &nbsp;
       {new Date().getFullYear()}
     </Typography>
@@ -302,25 +302,25 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link
-            color="text.secondary"
-            variant="body2"
-            href="https://github.com/themis1986/sense_of_fear_infernal_decay_album_marketing_site/blob/main/privacy_Policy.md"
+          <MuiLink
+            component={RouterLink}
+            to="/privacy-policy"
+            color="primary"
             target="_blank"
           >
             Privacy Policy
-          </Link>
+          </MuiLink>
           <Typography sx={{ display: "inline", mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link
-            color="text.secondary"
-            variant="body2"
-            href="https://github.com/themis1986/sense_of_fear_infernal_decay_album_marketing_site/blob/main/terms_of_service.md"
+          <MuiLink
+            component={RouterLink}
+            to="/terms-and-conditions"
+            color="primary"
             target="_blank"
           >
-            Terms of Service
-          </Link>
+            Terms & Conditions
+          </MuiLink>
           <Copyright />
         </div>
         <Stack

@@ -1,9 +1,18 @@
 import { GlobalStyles } from "@mui/material";
-import MarketingPage from "./marketing-page/MarketingPage";
+// 1. Import routing components
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// 2. Import your pages
+import MarketingPage from "./marketing-page/pages/MarketingPage";
+import PrivacyPolicyPage from "./marketing-page/pages/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./marketing-page/pages/TermsAndConditionsPage";
+
+const basePath = "/sense_of_fear_infernal_decay_album_marketing_site";
 
 function App() {
   return (
-    <>
+    // 3. Wrap everything in BrowserRouter
+    <BrowserRouter basename={basePath}>
       <GlobalStyles
         styles={{
           ':where([data-mui-color-scheme="dark"]) #hero': {
@@ -12,8 +21,24 @@ function App() {
         }}
       />
 
-      <MarketingPage />
-    </>
+      <Routes>
+        <Route path="/" element={<MarketingPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route
+          path="/terms-and-conditions"
+          element={<TermsAndConditionsPage />}
+        />
+        <Route
+          path="*"
+          element={
+            <div style={{ padding: 20 }}>
+              <h2>404 - Page Not Found</h2>
+              <p>Sorry, the page you requested does not exist.</p>
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

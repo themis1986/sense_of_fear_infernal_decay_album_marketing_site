@@ -1,12 +1,13 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
+import MuiLink from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import albumCover from "../../assets/cover.png";
 import { useScrollTo } from "../hooks/useScrollTo";
+import { Link as RouterLink } from "react-router-dom";
 
 const StyledImage = styled("img")(({ theme }) => ({
   display: "block",
@@ -117,13 +118,14 @@ export default function Hero() {
             sx={{ textAlign: "center" }}
           >
             By clicking &quot;Listen now&quot; you agree to our&nbsp;
-            <Link
-              href="https://github.com/themis1986/sense_of_fear_infernal_decay_album_marketing_site/blob/main/terms_of_service.md"
+            <MuiLink
+              component={RouterLink}
+              to="/terms-and-conditions"
               color="primary"
               target="_blank"
             >
               Terms & Conditions
-            </Link>
+            </MuiLink>
             .
           </Typography>
         </Stack>
