@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import AudioPlayer, { type PlayerHandle } from "./Player";
 import { styled } from "@mui/material/styles";
 import { supabase, supabaseUrl } from "../../supabaseClient";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 import cover from "../../assets/cover.png";
 
@@ -39,12 +41,6 @@ const items = [
   {
     title: "9. Shallow journey of your soul",
   },
-  // {
-  //   title: "10. End of Days",
-  // },
-  // {
-  //   title: "11. Requiem for the Lost",
-  // },
 ];
 
 interface ChipProps {
@@ -75,12 +71,14 @@ interface MobileLayoutProps {
   selectedItemIndex: number;
   handleItemClick: (index: number) => void;
   selectedFeature: (typeof items)[0];
+  children: React.ReactNode;
 }
 
 export function MobileLayout({
   selectedItemIndex,
   handleItemClick,
   selectedFeature,
+  children,
 }: MobileLayoutProps) {
   if (!items[selectedItemIndex]) {
     return null;
@@ -113,6 +111,7 @@ export function MobileLayout({
           >
             {selectedFeature.title}
           </Typography>
+          {children}
         </Box>
       </Card>
     </Box>
@@ -129,6 +128,8 @@ interface Song {
 export default function Player() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
   const [songs, setSongs] = React.useState<Song[]>([]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   React.useEffect(() => {
     async function getSongs() {
@@ -235,11 +236,27 @@ export default function Player() {
               </Box>
             ))}
           </Box>
-          <MobileLayout
-            selectedItemIndex={selectedItemIndex}
-            handleItemClick={handleItemClick}
-            selectedFeature={selectedFeature}
-          />
+          {isMobile && (
+            <MobileLayout
+              selectedItemIndex={selectedItemIndex}
+              handleItemClick={handleItemClick}
+              selectedFeature={selectedFeature}
+            >
+              <AudioPlayer
+                ref={playerRef}
+                src={songs[selectedItemIndex]?.url}
+                onClickNext={() => {
+                  const nextIndex = (selectedItemIndex + 1) % items.length;
+                  setSelectedItemIndex(nextIndex);
+                }}
+                onClickPrevious={() => {
+                  const prevIndex =
+                    (selectedItemIndex - 1 + items.length) % items.length;
+                  setSelectedItemIndex(prevIndex);
+                }}
+              />
+            </MobileLayout>
+          )}
         </div>
         <Box
           sx={{
@@ -259,20 +276,22 @@ export default function Player() {
               p: 2,
             }}
           >
-            <AudioPlayer
-              ref={playerRef}
-              src={songs[selectedItemIndex]?.url}
-              onClickNext={() => {
-                const nextIndex = (selectedItemIndex + 1) % items.length;
-                setSelectedItemIndex(nextIndex);
-              }}
-              onClickPrevious={() => {
-                const prevIndex =
-                  (selectedItemIndex - 1 + items.length) % items.length;
-                setSelectedItemIndex(prevIndex);
-              }}
-            />
-
+            {" "}
+            {!isMobile && (
+              <AudioPlayer
+                ref={playerRef}
+                src={songs[selectedItemIndex]?.url}
+                onClickNext={() => {
+                  const nextIndex = (selectedItemIndex + 1) % items.length;
+                  setSelectedItemIndex(nextIndex);
+                }}
+                onClickPrevious={() => {
+                  const prevIndex =
+                    (selectedItemIndex - 1 + items.length) % items.length;
+                  setSelectedItemIndex(prevIndex);
+                }}
+              />
+            )}
             <Box
               sx={(theme) => ({
                 m: "auto",
