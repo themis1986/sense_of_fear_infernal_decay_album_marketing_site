@@ -126,10 +126,12 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem>Listen</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Video</MenuItem>
+                <MenuItem onClick={() => scrollTo("player")}>Listen</MenuItem>
+                <MenuItem onClick={() => scrollTo("about")}>About</MenuItem>
+                <MenuItem onClick={() => scrollTo("highlights")}>
+                  Highlights
+                </MenuItem>
+                <MenuItem onClick={() => scrollTo("contact")}>Video</MenuItem>
               </Box>
             </Drawer>
           </Box>
