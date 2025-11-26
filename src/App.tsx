@@ -5,8 +5,6 @@ import MarketingPage from "./marketing-page/pages/MarketingPage";
 import PrivacyPolicyPage from "./marketing-page/pages/PrivacyPolicyPage";
 import TermsAndConditionsPage from "./marketing-page/pages/TermsAndConditionsPage";
 
-// const basePath = "/sense_of_fear_infernal_decay_album_marketing_site";
-
 function App() {
   return (
     <BrowserRouter>
