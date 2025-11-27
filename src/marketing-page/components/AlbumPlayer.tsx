@@ -15,31 +15,37 @@ import cover from "../../assets/cover.png";
 
 const items = [
   {
-    title: "1. Intro",
+    title: "1. Infernal Decay",
   },
   {
     title: "2. Cerberus",
   },
   {
-    title: "3. Intro (Kiss of war)",
+    title: "3. Empathy",
   },
   {
-    title: "4. Kiss of war",
+    title: "4. Conflict Of Interest",
   },
   {
-    title: "5. Riddle of shadows",
+    title: "5. Ethereal Requiem",
   },
   {
-    title: "6. Beast",
+    title: "6. Kiss Of War",
   },
   {
-    title: "7. Empathy",
+    title: "7. Kleos",
   },
   {
     title: "8. Labyrinth",
   },
   {
-    title: "9. Shallow journey of your soul",
+    title: "9. Riddle Of Shadows",
+  },
+  {
+    title: "10. The Shallow Journey Of Your Soul",
+  },
+  {
+    title: "11. Bonus track: Retaliation (remastered)",
   },
 ];
 
@@ -133,7 +139,10 @@ export default function Player() {
 
   React.useEffect(() => {
     async function getSongs() {
-      const { data, error } = await supabase.from("songs").select("*");
+      const { data, error } = await supabase
+        .from("songs")
+        .select("*")
+        .order("id", { ascending: true });
 
       if (error) {
         console.error("Error fetching songs:", error);
