@@ -29,7 +29,7 @@ const items = [
   },
   {
     id: 3,
-    title: "3. Empathy",
+    title: "3. Empathy To Darkness",
     details: "Music: Themis Iakovidis | Lyrics: Ilias Kitidis",
     description: "song",
   },
