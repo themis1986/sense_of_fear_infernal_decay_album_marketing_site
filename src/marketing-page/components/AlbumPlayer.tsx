@@ -18,56 +18,69 @@ const items = [
   {
     id: 1,
     title: "1. Infernal Decay",
+    details: "Music: Ioannis Kikis",
     description: "intro",
   },
   {
     id: 2,
     title: "2. Cerberus",
+    details: "Music: Ioannis Kikis, Themis Iakovidis | Lyrics: Ilias Kitidis",
     description: "song",
   },
   {
     id: 3,
     title: "3. Empathy",
+    details: "Music: Themis Iakovidis | Lyrics: Ilias Kitidis",
     description: "song",
   },
   {
     id: 4,
     title: "4. Conflict Of Interest",
+    details: "Music & Lyrics : Ioannis Kikis",
     description: "song",
   },
   {
     id: 5,
     title: "5. Ethereal Requiem",
+    details: "Music : Ioannis Kikis",
     description: "intro",
   },
   {
     id: 6,
     title: "6. Kiss Of War",
+    details: " Music: Ioannis Kikis | Lyrics : Ilias Kitidis",
     description: "song",
   },
   {
     id: 7,
     title: "7. Kleos",
+    details:
+      "Music : Ioannis Kikis , Themis Iakovidis | Lyrics : Ilias Kitidis , Ioannis Kikis",
     description: "song",
   },
   {
     id: 8,
     title: "8. Labyrinth",
+    details:
+      "Music : Ioannis Kikis , Themis Iakovidis | Lyrics : Ilias Kitidis",
     description: "song",
   },
   {
     id: 9,
     title: "9. Riddle Of Shadows",
+    details: "Music : Ioannis Kikis | Lyrics : Ilias Kitidis , Ioannis Kikis",
     description: "song",
   },
   {
     id: 10,
     title: "10. The Shallow Journey Of Your Soul",
+    details: "Music : Ioannis Kikis | Lyrics : Ilias Kitidis, Ioannis Kikis",
     description: "song",
   },
   {
     id: 11,
     title: "11. Bonus track: Retaliation (remastered)",
+    details: "Music & Lyrics : Ioannis Kikis",
     description: "song",
   },
 ];
@@ -139,6 +152,12 @@ export function MobileLayout({
             sx={{ color: "text.primary", fontWeight: "medium" }}
           >
             {selectedFeature.title}
+          </Typography>
+          <Typography
+            gutterBottom
+            sx={{ color: "text.primary", fontWeight: "light" }}
+          >
+            {selectedFeature.details}
           </Typography>
           {children}
         </Box>
@@ -374,10 +393,22 @@ export default function Player() {
                     sx={{
                       color: "text.primary",
                       fontWeight: "bold",
-                      marginBottom: 2,
+                      marginBottom: 0,
                     }}
                   >
                     {selectedFeature.title}
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    gutterBottom
+                    sx={{
+                      color: "text.primary",
+                      fontWeight: "light",
+                      fontSize: 14,
+                      marginBottom: 2,
+                    }}
+                  >
+                    {selectedFeature.details}
                   </Typography>
                   <Typography
                     variant="body1"
@@ -393,20 +424,34 @@ export default function Player() {
                 </Box>
               </Box>
             ) : (
-              <Box
-                sx={(theme) => ({
-                  m: "auto",
-                  width: 420,
-                  height: 500,
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundImage: `url(${cover})`,
-                  ...theme.applyStyles("dark", {
+              <>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    color: "text.primary",
+                    fontWeight: "light",
+                    fontSize: 14,
+                    marginBottom: 0,
+                  }}
+                >
+                  {selectedFeature.details}
+                </Typography>
+                <Box
+                  sx={(theme) => ({
+                    m: "auto",
+                    width: 420,
+                    height: 500,
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
                     backgroundImage: `url(${cover})`,
-                  }),
-                })}
-              />
+                    ...theme.applyStyles("dark", {
+                      backgroundImage: `url(${cover})`,
+                    }),
+                  })}
+                />
+              </>
             )}
           </Card>
         </Box>
