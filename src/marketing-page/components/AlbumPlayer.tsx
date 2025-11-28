@@ -12,40 +12,63 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
 import cover from "../../assets/cover.png";
+import { lyrics } from "../lyrics";
 
 const items = [
   {
+    id: 1,
     title: "1. Infernal Decay",
+    description: "intro",
   },
   {
+    id: 2,
     title: "2. Cerberus",
+    description: "song",
   },
   {
+    id: 3,
     title: "3. Empathy",
+    description: "song",
   },
   {
+    id: 4,
     title: "4. Conflict Of Interest",
+    description: "song",
   },
   {
+    id: 5,
     title: "5. Ethereal Requiem",
+    description: "intro",
   },
   {
+    id: 6,
     title: "6. Kiss Of War",
+    description: "song",
   },
   {
+    id: 7,
     title: "7. Kleos",
+    description: "song",
   },
   {
+    id: 8,
     title: "8. Labyrinth",
+    description: "song",
   },
   {
+    id: 9,
     title: "9. Riddle Of Shadows",
+    description: "song",
   },
   {
+    id: 10,
     title: "10. The Shallow Journey Of Your Soul",
+    description: "song",
   },
   {
+    id: 11,
     title: "11. Bonus track: Retaliation (remastered)",
+    description: "song",
   },
 ];
 
@@ -167,6 +190,13 @@ export default function Player() {
   };
 
   const selectedFeature = items[selectedItemIndex];
+  const currentSongId = selectedFeature.id;
+  const hasLyrics =
+    selectedFeature.description === "song" &&
+    lyrics[currentSongId as keyof typeof lyrics];
+  const currentLyrics = hasLyrics
+    ? lyrics[currentSongId as keyof typeof lyrics]
+    : null;
 
   return (
     <Container id="player" sx={{ py: { xs: 8, sm: 16 } }}>
@@ -301,20 +331,83 @@ export default function Player() {
                 }}
               />
             )}
-            <Box
-              sx={(theme) => ({
-                m: "auto",
-                width: 420,
-                height: 500,
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundImage: `url(${cover})`,
-                ...theme.applyStyles("dark", {
+            {hasLyrics ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "100%",
+                  height: 500,
+                  gap: 2,
+                }}
+              >
+                {/* Small cover image in upper left */}
+                <Box
+                  sx={(theme) => ({
+                    width: 150,
+                    height: 150,
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundImage: `url(${cover})`,
+                    flexShrink: 0,
+                    ...theme.applyStyles("dark", {
+                      backgroundImage: `url(${cover})`,
+                    }),
+                  })}
+                />
+                {/* Lyrics container */}
+                <Box
+                  sx={{
+                    flex: 1,
+                    height: "100%",
+                    overflow: "auto",
+                    padding: 2,
+                    backgroundColor: "background.paper",
+                    borderRadius: 1,
+                    border: "1px solid",
+                    borderColor: "divider",
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    gutterBottom
+                    sx={{
+                      color: "text.primary",
+                      fontWeight: "bold",
+                      marginBottom: 2,
+                    }}
+                  >
+                    {selectedFeature.title}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: "text.primary",
+                      whiteSpace: "pre-line",
+                      lineHeight: 1.6,
+                      fontFamily: "monospace",
+                    }}
+                  >
+                    {currentLyrics}
+                  </Typography>
+                </Box>
+              </Box>
+            ) : (
+              <Box
+                sx={(theme) => ({
+                  m: "auto",
+                  width: 420,
+                  height: 500,
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
                   backgroundImage: `url(${cover})`,
-                }),
-              })}
-            />
+                  ...theme.applyStyles("dark", {
+                    backgroundImage: `url(${cover})`,
+                  }),
+                })}
+              />
+            )}
           </Card>
         </Box>
       </Box>

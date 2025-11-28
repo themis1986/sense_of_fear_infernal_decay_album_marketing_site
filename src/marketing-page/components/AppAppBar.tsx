@@ -131,7 +131,7 @@ export default function AppAppBar() {
                 <MenuItem onClick={() => scrollTo("highlights")}>
                   Highlights
                 </MenuItem>
-                <MenuItem onClick={() => scrollTo("contact")}>Video</MenuItem>
+                <MenuItem onClick={() => scrollTo("contact")}>Contact</MenuItem>
               </Box>
             </Drawer>
           </Box>
