@@ -7,6 +7,7 @@ import About from "../components/About";
 import AlbumPlayer from "../components/AlbumPlayer";
 import Highlights from "../components/Highlights";
 import Footer from "../components/Footer";
+import Credits from "../components/Credits";
 
 export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
   return (
@@ -21,6 +22,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
         <About />
         <Divider />
         <Highlights />
+        <Divider />
+        <Credits />
         <Divider />
         <Footer />
       </div>

@@ -94,6 +94,14 @@ export default function AppAppBar() {
                 variant="text"
                 color="info"
                 size="small"
+                onClick={() => scrollTo("credits")}
+              >
+                Credits
+              </Button>
+              <Button
+                variant="text"
+                color="info"
+                size="small"
                 onClick={() => scrollTo("contact")}
               >
                 Contact
@@ -131,6 +139,7 @@ export default function AppAppBar() {
                 <MenuItem onClick={() => scrollTo("highlights")}>
                   Highlights
                 </MenuItem>
+                <MenuItem onClick={() => scrollTo("credits")}>Credits</MenuItem>
                 <MenuItem onClick={() => scrollTo("contact")}>Contact</MenuItem>
               </Box>
             </Drawer>
