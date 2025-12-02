@@ -96,12 +96,12 @@ export default function Hero() {
               width: { sm: "100%", md: "80%" },
             }}
           >
-            We are more than happy to welcome you on our private new album
-            streaming marketing site.Feel free to listen to our brand new songs
-            and explore our about and highlights section to get to know us
-            better.We are more than welcome to hear your feedbacks and thoughts
-            about our new album and looking forward for a potential
-            collaboration with you!Enjoy!!!
+            We are more than happy to welcome you to our private new-album
+            streaming and marketing page. Feel free to listen to our brand-new
+            songs and explore the ‘About’ and ‘Highlights’ sections to get to
+            know us better. We would be delighted to hear your feedback and
+            thoughts about our new album, and we look forward to a potential
+            collaboration with you. Enjoy!
           </Typography>
           <Button
             variant="contained"

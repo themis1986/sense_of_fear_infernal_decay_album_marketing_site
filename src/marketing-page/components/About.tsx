@@ -160,11 +160,11 @@ export default function About() {
             Now in late 2025, the new full length album{" "}
             <strong>“Infernal Decay”</strong> is done and waiting for a
             thunderous release in 2026! This album is a relentless journey
-            through crushing riffs, haunting melodies, and thunderous rhythms
-            that embody the essence of dark/agressive heavy metal. Experience
+            through crushing riffs, haunting melodies, and powerfull rhythms
+            that embody the essence of dark/aggressive heavy metal. Experience
             the fusion of brutality and atmosphere as{" "}
             <strong>Sense of Fear</strong> delivers a sonic assault that will
-            leave you breathless."
+            leave you breathless.
           </Typography>
         </Box>
         <Grid container spacing={2}>

@@ -232,10 +232,10 @@ export default function Player() {
           variant="body1"
           sx={{ color: "text.primary", mb: { xs: 2, sm: 4 } }}
         >
-          Listen to our latest
-          <span style={{ fontWeight: "bold" }}> "Infernal Decay"</span> album
-          stream.All audio streams are at quality levels optimized for all
-          devices and network conditions.
+          Listen to our latest album
+          <span style={{ fontWeight: "bold" }}>“Infernal Decay”</span>. All
+          audio streams are optimized for high-quality playback across all
+          devices and network conditions. Listen to our latest
         </Typography>
       </Box>
       <Box
