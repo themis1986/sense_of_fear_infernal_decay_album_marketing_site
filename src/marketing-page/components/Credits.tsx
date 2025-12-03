@@ -35,7 +35,7 @@ export default function About() {
           <Typography variant="body1" sx={{ color: "grey.400" }}>
             Recorded at Valve Studios by{" "}
             <a
-              href="http://www.valvestudios.gr"
+              href="http://www.valvestudio.gr"
               target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: "none", color: "inherit" }}
