@@ -125,13 +125,13 @@ export default function About() {
             </strong>{" "}
             <br />
             <br />
-            <strong>Sense of Fear</strong>entered the studio to record our first
-            official release — the self-titled “Sense of Fear” EP, released in
-            October 2013. In 2018 we released our full-length album “As the Ages
-            Passing By”, earning excellent reviews from both Greek and
-            international press. The album’s release was met with tremendously
-            positive feedback by the fans, and was followed by numerous live
-            shows across Greece.
+            <strong>Sense of Fear</strong> entered the studio to record our
+            first official release — the self-titled “Sense of Fear” EP,
+            released in October 2013. In 2018 we released our full-length album
+            “As the Ages Passing By”, earning excellent reviews from both Greek
+            and international press. The album’s release was met with
+            tremendously positive feedback by the fans, and was followed by
+            numerous live shows across Greece.
             <br />
             <br />
             Sense of Fear have shared the stage with renowned metal acts such as

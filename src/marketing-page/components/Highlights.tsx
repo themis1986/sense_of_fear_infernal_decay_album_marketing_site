@@ -104,7 +104,7 @@ export default function Highlights() {
         >
           Highlights
         </Typography>
-        <Typography variant="body1" sx={{ color: "text.secondary" }}>
+        <Typography variant="body1" sx={{ color: "text.primary" }}>
           Check out released singles "Conflict of interest" and "Retaliation"
           from our latest album "Infernal Decay" that showcase the band's
           signature sound and musical evolution.
