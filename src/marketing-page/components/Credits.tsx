@@ -59,9 +59,8 @@ export default function About() {
             .
             <br />
             <br />
-            Producer <strong>George Nerantzis</strong>. Producer{" "}
-            <strong>Stratos “Strutter” Karagiannidis</strong>. Executive
-            producer Ioannis Kikis.
+            Producer <strong>Stratos “Strutter” Karagiannidis</strong>.
+            Executive producer Ioannis Kikis.
             <br />
             <br />
             2nd solo from Riddle Of Shadows by Antonis Kikis recorded at{" "}
@@ -96,8 +95,9 @@ export default function About() {
             Sense Of Fear would like to thank: Stratos “Strutter” Karagiannidis,
             George Neratzis , Colin Marks, Antonis Kikis, Nik Logiatidis, Kostas
             Theoxaris, Zisis Sapnaras,Nikos Momtsios, our Awesome choir, Evita
-            Mwraiti, Xrusa Valsami, our road crew, fam and friends!!! Special
-            Thanks to our Fans for their support all over these years!!!
+            Mwraiti, Xrusa Valsami, Kelly & Alex, our road crew, families and
+            friends!!! Special thanks to our Fans for their support all over
+            these years!!!
           </Typography>
         </Box>
         <Box
