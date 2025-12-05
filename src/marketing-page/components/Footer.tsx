@@ -98,45 +98,31 @@ export default function Footer() {
     }
   }, [status]);
 
-  const FORM_ENDPOINT = `https://formsubmit.co/ajax/${
-    import.meta.env.VITE_EMAIL
-  }`;
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
 
-    let emailSuccess = false;
-
-    // 1. Send Email via FormSubmit
     try {
-      const emailResponse = await fetch(FORM_ENDPOINT, {
+      // Use Netlify Forms
+      const response = await fetch("/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          Name: formData.name,
-          Email: formData.email,
-          Message: formData.message,
-          _subject: `New contact message from ${formData.name}`, // Subject line for the email
-        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "contact",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }).toString(),
       });
 
-      if (emailResponse.ok) {
-        emailSuccess = true;
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
       } else {
-        console.error("Email forwarding failed (FormSubmit error).");
+        setStatus("error");
       }
     } catch (error) {
-      console.error("Network error during FormSubmit call:", error);
-    }
-
-    if (emailSuccess) {
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" }); // Clear form
-    } else {
+      console.error("Form submission failed:", error);
       setStatus("error");
     }
   };
@@ -153,8 +139,10 @@ export default function Footer() {
     if (status === "error") {
       return (
         <Typography color="error.main" variant="body2" sx={{ mt: 1 }}>
-          Failed to send message. Please check the console and ensure the email
-          address is confirmed.
+          Failed to send message. Please try again or contact us directly at{" "}
+          <MuiLink href="mailto:senseoffearband@gmail.com" color="error">
+            senseoffearband@gmail.com
+          </MuiLink>
         </Typography>
       );
     }
@@ -216,9 +204,17 @@ export default function Footer() {
         <Box sx={{ width: { xs: "100%", sm: "60%" } }} id="contact">
           <Box
             component="form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
             sx={{ display: "flex", flexDirection: "column", gap: 1 }}
           >
+            {/* Hidden field for Netlify Forms */}
+            <input type="hidden" name="form-name" value="contact" />
+            {/* Honeypot field for spam protection */}
+            <input type="hidden" name="bot-field" />
             {/* Name Field */}
             <InputLabel htmlFor="name">Name</InputLabel>
             <TextField
