@@ -42,12 +42,12 @@ export default function About() {
             >
               <strong>Stratos “Strutter” Karagiannidis</strong>
             </a>
-            .( except drums from 2,3,6,7,8 songs , which have been recorded at{" "}
+            .( except drums on tracks 2,3,6,7 and 8, which were recorded at{" "}
             <strong>Magnanimous Studios</strong> by{" "}
             <strong>Nik Logiatidis</strong>).
             <br />
             <br />
-            Reamped, Mixed and Mastered by{" "}
+            Re-amped, mixed and mastered by{" "}
             <a
               href="http://www.georgenerantzis.com"
               target="_blank"
@@ -59,24 +59,24 @@ export default function About() {
             .
             <br />
             <br />
-            Producer <strong>Stratos “Strutter” Karagiannidis</strong>.
-            Executive producer Ioannis Kikis.
+            Produced by <strong>Stratos “Strutter” Karagiannidis</strong>.
+            Executive producer: Ioannis Kikis.
             <br />
             <br />
-            2nd solo from Riddle Of Shadows by Antonis Kikis recorded at{" "}
-            <strong>Vault Studios by Kostas Theoxaris</strong>.
+            Second solo on "Riddle Of Shadows" performed by Antonis Kikis and
+            recorded at <strong>Vault Studios by Kostas Theoxaris</strong>.
             <br />
             <br />
             Choir recorded at{" "}
-            <strong>Binaural Feeling Studios by Zisis Sapnaras</strong>. Choir
-            consists of: Emmelia Kiki, Nantia Matiaki, Xristina Matiaki, Jutta
-            Tsotsou, Elli Theodoridou, Eleni Davidopoulou, Eleni Tsiouxara, Rita
-            Tsioura.
+            <strong>Binaural Feeling Studios by Zisis Sapnaras</strong>. The
+            choir consists of: Emmelia Kiki, Nantia Matiaki, Xristina Matiaki,
+            Jutta Tsotsou, Elli Theodoridou, Eleni Davidopoulou, Eleni
+            Tsiouxara, Rita Tsioura.
             <br />
             <br />
-            Artwork made by{" "}
+            Artwork by{" "}
             <strong>
-              Colin Marks,{" "}
+              Colin Marks -{" "}
               <a
                 href="http://rainsongdesign.co.uk"
                 target="_blank"
@@ -89,15 +89,18 @@ export default function About() {
             .
             <br />
             <br />
-            Photoshooting by <strong>Nikos Momtsios</strong>.
+            Photoshoot by <strong>Nikos Momtsios</strong>.
             <br />
             <br />
-            Sense Of Fear would like to thank: Stratos “Strutter” Karagiannidis,
-            George Neratzis , Colin Marks, Antonis Kikis, Nik Logiatidis, Kostas
-            Theoxaris, Zisis Sapnaras,Nikos Momtsios, our Awesome choir, Evita
-            Mwraiti, Xrusa Valsami, Kelly & Alex, our road crew, families and
-            friends!!! Special thanks to our Fans for their support all over
-            these years!!!
+            Special thanks to:
+            <br />
+            Stratos “Strutter” Karagiannidis, George Neratzis , Colin Marks,
+            Antonis Kikis, Nik Logiatidis, Kostas Theoxaris, Zisis
+            Sapnaras,Nikos Momtsios, our Awesome choir, Evita Mwraiti, Xrusa
+            Valsami, our road crew, families and friends.
+            <br />
+            Extra special thanks to our awesome fans for their love and support
+            throughout all these years!
           </Typography>
         </Box>
         <Box

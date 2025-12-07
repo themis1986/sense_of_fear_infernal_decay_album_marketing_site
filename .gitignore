@@ -16,3 +16,10 @@ yarn.lock
 audio_samples/
 .env.local
 dist/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
