@@ -60,7 +60,7 @@ const items = [
   },
   {
     id: 8,
-    title: "8. Labyrinth",
+    title: "8. Labyrinth (feat. Sakis Tolis)",
     details:
       "Music : Ioannis Kikis , Themis Iakovidis | Lyrics : Ilias Kitidis",
     description: "song",

@@ -67,6 +67,19 @@ export default function About() {
             recorded at <strong>Vault Studios by Kostas Theoxaris</strong>.
             <br />
             <br />
+            "Labyrinth" vocals featuring{" "}
+            <a
+              href="https://www.instagram.com/sakis.tolis/#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Sakis Tolis Instagram profile"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <strong>Sakis Tolis (Rotting Christ)</strong>
+            </a>
+            .
+            <br />
+            <br />
             Choir recorded at{" "}
             <strong>Binaural Feeling Studios by Zisis Sapnaras</strong>. The
             choir consists of: Emmelia Kiki, Nantia Matiaki, Xristina Matiaki,
@@ -94,8 +107,8 @@ export default function About() {
             <br />
             Special thanks to:
             <br />
-            Stratos “Strutter” Karagiannidis, George Neratzis , Colin Marks,
-            Antonis Kikis, Nik Logiatidis, Kostas Theoxaris, Zisis
+            Stratos “Strutter” Karagiannidis, George Neratzis, Sakis Tolis,
+            Colin Marks, Antonis Kikis, Nik Logiatidis, Kostas Theoxaris, Zisis
             Sapnaras,Nikos Momtsios, our Awesome choir, Evita Mwraiti, Xrusa
             Valsami, our road crew, families and friends.
             <br />
