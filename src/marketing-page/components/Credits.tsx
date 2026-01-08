@@ -109,8 +109,8 @@ export default function About() {
             <br />
             Stratos “Strutter” Karagiannidis, George Neratzis, Sakis Tolis,
             Colin Marks, Antonis Kikis, Nik Logiatidis, Kostas Theoxaris, Zisis
-            Sapnaras,Nikos Momtsios, our Awesome choir, Evita Mwraiti, Xrusa
-            Valsami, our road crew, families and friends.
+            Sapnaras,Nikos Momtsios, our awesome choir, Evita Mwraiti, Xrusa
+            Valsami, Kelly & Alex, our road crew, families and friends.
             <br />
             Extra special thanks to our awesome fans for their love and support
             throughout all these years!
