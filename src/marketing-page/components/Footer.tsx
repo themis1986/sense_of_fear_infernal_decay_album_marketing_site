@@ -30,6 +30,14 @@ function FacebookIcon() {
   );
 }
 
+function TikTokIcon() {
+  return (
+    <SvgIcon>
+      <path d="M16.6 5.82s.51.5 0 0A4.27 4.27 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.15 2.55 5.7 5.7 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" />{" "}
+    </SvgIcon>
+  );
+}
+
 function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
@@ -339,13 +347,23 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
+            href="https://www.tiktok.com/@senseoffear"
+            aria-label="Facebook"
+            sx={{ alignSelf: "center" }}
+            target="_blank"
+          >
+            <TikTokIcon />
+          </IconButton>
+          <IconButton
+            color="inherit"
+            size="small"
             href="https://facebook.com/senseoffearband"
             aria-label="Facebook"
             sx={{ alignSelf: "center" }}
             target="_blank"
           >
             <FacebookIcon />
-          </IconButton>
+          </IconButton>{" "}
         </Stack>
       </Box>
     </Container>
