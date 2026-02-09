@@ -181,22 +181,33 @@ export default function Player() {
 
   React.useEffect(() => {
     async function getSongs() {
-      const { data, error } = await supabase
-        .from("songs")
-        .select("*")
-        .order("id", { ascending: true });
-
-      if (error) {
-        console.error("Error fetching songs:", error);
+      if (!supabase) {
+        console.warn("Supabase not configured - skipping song fetch");
         return;
       }
 
-      const dataWithUrls = data.map((song) => ({
-        ...song,
-        url: `${supabaseUrl}/storage/v1/object/public/${song.url}`,
-      }));
+      try {
+        const { data, error } = await supabase
+          .from("songs")
+          .select("*")
+          .order("id", { ascending: true });
 
-      setSongs(dataWithUrls);
+        if (error) {
+          console.error("Error fetching songs:", error);
+          return;
+        }
+
+        if (data) {
+          const dataWithUrls = data.map((song) => ({
+            ...song,
+            url: `${supabaseUrl}/storage/v1/object/public/${song.url}`,
+          }));
+
+          setSongs(dataWithUrls);
+        }
+      } catch (error) {
+        console.error("Failed to fetch songs:", error);
+      }
     }
     getSongs();
   }, []);
@@ -205,7 +216,8 @@ export default function Player() {
 
   const handleItemClick = (index: number) => {
     setSelectedItemIndex(index);
-    playerRef.current?.play();
+    // Don't auto-play on mobile - let user click play button
+    // Mobile browsers block programmatic play() calls
   };
 
   const selectedFeature = items[selectedItemIndex];
@@ -364,7 +376,7 @@ export default function Player() {
                   sx={(theme) => ({
                     width: 150,
                     height: 150,
-                    backgroundSize: "contain",
+                    backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                     backgroundImage: `url(${cover})`,
