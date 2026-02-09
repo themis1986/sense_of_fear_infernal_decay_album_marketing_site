@@ -28,7 +28,7 @@ const Player = forwardRef<PlayerHandle, PlayerProps>(
       <div className="custom-audio-player">
         <AudioPlayer
           ref={playerRef}
-          autoPlay
+          autoPlay={false}
           volume={0.8}
           showSkipControls
           showJumpControls
@@ -40,7 +40,7 @@ const Player = forwardRef<PlayerHandle, PlayerProps>(
         />
       </div>
     );
-  }
+  },
 );
 
 Player.displayName = "Player";
